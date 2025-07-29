@@ -11,8 +11,8 @@ from openai import (
     OpenAI,
     RateLimitError,
 )
-from google import genai
-from google.genai import types
+import google.generativeai as genai
+from google.generativeai import types
 
 
 class LMMEngine:
