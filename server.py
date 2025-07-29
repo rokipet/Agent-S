@@ -148,10 +148,8 @@ async def run(request: RunRequest):
             "model": request.model,
         }
 
-        if "gpt" in request.model:
-            engine_type = "openai"
-        elif "claude" in request.model:
-            engine_type = "anthropic"
+        # Use OpenAI models by default
+        engine_type = "openai"
 
         engine_params = {
             "engine_type": engine_type,

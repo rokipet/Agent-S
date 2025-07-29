@@ -125,7 +125,7 @@ Install the package:
 pip install gui-agents
 ```
 
-Set your LLM API Keys and other environment variables. You can do this by adding the following line to your .bashrc (Linux), or .zshrc (MacOS) file. 
+Set your LLM API Keys and other environment variables. You can do this by adding the following line to your `.bashrc` (Linux) or `.zshrc` (MacOS) file.
 
 ```
 export OPENAI_API_KEY=<YOUR_API_KEY>
@@ -141,6 +141,20 @@ os.environ["OPENAI_API_KEY"] = "<YOUR_API_KEY>"
 ```
 
 We also support Azure OpenAI, Anthropic, Gemini, Open Router, and vLLM inference. For more information refer to [models.md](models.md).
+
+### Quickstart with OpenAI
+
+If you prefer to use OpenAI's models exclusively, make sure your `OPENAI_API_KEY` environment variable is set as shown above. Then launch the agent with the `--provider` flag set to `openai` and specify your desired OpenAI model. For example:
+
+```bash
+agent_s2 \
+  --provider "openai" \
+  --model "gpt-4o" \
+  --grounding_model_provider "openai" \
+  --grounding_model "gpt-4o"
+```
+
+This configuration uses OpenAI for both generation and grounding.
 
 ### Setup Retrieval from Web using Perplexica
 Agent S works best with web-knowledge retrieval. To enable this feature, you need to setup Perplexica: 
@@ -191,18 +205,18 @@ Run Agent S2 with a specific model (default is `gpt-4o`):
 
 ```sh
 agent_s2 \
-  --provider "anthropic" \
-  --model "claude-3-7-sonnet-20250219" \
-  --grounding_model_provider "anthropic" \
-  --grounding_model "claude-3-7-sonnet-20250219" \
+  --provider "openai" \
+  --model "gpt-4o" \
+  --grounding_model_provider "openai" \
+  --grounding_model "gpt-4o" \
 ```
 
 Or use a custom endpoint:
 
 ```bash
 agent_s2 \
-  --provider "anthropic" \
-  --model "claude-3-7-sonnet-20250219" \
+  --provider "openai" \
+  --model "gpt-4o" \
   --endpoint_provider "huggingface" \
   --endpoint_url "<endpoint_url>/v1/"
 ```
@@ -211,7 +225,7 @@ agent_s2 \
 - **`--provider`**, **`--model`** 
   - Purpose: Specifies the main generation model
   - Supports: all model providers in [models.md](models.md)
-  - Default: `--provider "anthropic" --model "claude-3-7-sonnet-20250219"`
+  - Default: `--provider "openai" --model "gpt-4o"`
 - **`--model_url`**, **`--model_api_key`**
    - Purpose: Specifies the custom endpoint for the main generation model and your API key
    - Note: These are optional. If not specified, `gui-agents` will default to your environment variables for the URL and API key.
@@ -226,7 +240,7 @@ You can use either Configuration 1 or Configuration 2:
 - **`--grounding_model_provider`**, **`--grounding_model`**
   - Purpose: Specifies the model for visual grounding (coordinate prediction)
   - Supports: all model providers in [models.md](models.md)
-  - Default: `--grounding_model_provider "anthropic" --grounding_model "claude-3-7-sonnet-20250219"`
+  - Default: `--grounding_model_provider "openai" --grounding_model "gpt-4o"`
 - ❗**Important**❗ **`--grounding_model_resize_width`**
   - Purpose:  Some API providers automatically rescale images. Therefore, the generated (x, y) will be relative to the rescaled image dimensions, instead of the original image dimensions.
   - Supports: [Anthropic rescaling](https://docs.anthropic.com/en/docs/build-with-claude/vision#)
