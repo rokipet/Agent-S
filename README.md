@@ -144,7 +144,7 @@ We also support Azure OpenAI, Anthropic, Gemini, Open Router, and vLLM inference
 
 ### Quickstart with OpenAI
 
-If you prefer to use OpenAI's models exclusively, make sure your `OPENAI_API_KEY` environment variable is set as shown above. Then launch the agent with the `--provider` flag set to `openai` and specify your desired OpenAI model. For example:
+OpenAI is the default provider. Ensure your `OPENAI_API_KEY` environment variable is set as shown above, then launch the agent and specify your desired OpenAI model (the `--provider` flag is optional). For example:
 
 ```bash
 agent_s2 \
